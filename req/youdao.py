@@ -93,8 +93,8 @@ class Dict:
 
 
 if __name__ == '__main__':
-	with open('./source/oral1600.ko', 'r') as f:
-		with open('./result/oral1600-youdao.zh', 'a') as f1:
+	with open('./source/oral1600.zh', 'r') as f:
+		with open('./result/oral1600-youdao.ko', 'a') as f1:
 			for i, line in enumerate(f.readlines()):
 				if i + 1 < 753:
 					continue
