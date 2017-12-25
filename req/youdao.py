@@ -77,8 +77,8 @@ class Dict:
 			'version': "2.1",
 			'keyfrom': "fanyi.web",
 			# 'action': "FY_BY_DEFAULT",
-			# 'action': "FY_BY_CLICKBUTTION",
-			'action': "FY_BY_REALTIME",
+			'action': "FY_BY_CLICKBUTTION",
+			# 'action': "FY_BY_REALTIME",
 			'typoResult': 'false'
 		}
 		try:
@@ -93,11 +93,11 @@ class Dict:
 
 
 if __name__ == '__main__':
-	with open('./source/oral1600.zh', 'r') as f:
-		with open('./result/oral1600-youdao.ko', 'w') as f1:
+	with open('./source/oral1600.ko', 'r') as f:
+		with open('./result/oral1600-youdao.zh', 'a') as f1:
 			for i, line in enumerate(f.readlines()):
-				# if i < 809:
-				# 	continue
+				if i + 1 < 753:
+					continue
 				if line == '\n':
 					f1.write(line)
 					continue
@@ -109,4 +109,4 @@ if __name__ == '__main__':
 					t_line = dic.translate(line)
 					print('again...')
 				f1.write(t_line + '\n')
-				time.sleep(2)
+				time.sleep(1.5)
