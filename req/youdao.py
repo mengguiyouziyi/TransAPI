@@ -96,8 +96,8 @@ if __name__ == '__main__':
 	with open('./source/tourism1600.zh', 'r') as f:
 		with open('./result/tourism1600-youdao.jp', 'a') as f1:
 			for i, line in enumerate(f.readlines()):
-				if i + 1 < 753:
-					continue
+				# if i + 1 < 753:
+				# 	continue
 				if line == '\n':
 					f1.write(line)
 					continue
