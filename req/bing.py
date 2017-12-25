@@ -11,8 +11,8 @@ class Dict:
 			'content-type': "application/json; charset=UTF-8",
 			# 'referer': "http://www.bing.com/translator/?mkt=zh-CN",  # 可有可没有
 		}
-		self.url = 'http://www.bing.com/translator/api/Translate/TranslateArray?from=zh-CHS&to=ja'
-		# self.url = 'http://www.bing.com/translator/api/Translate/TranslateArray?from=ja&to=zh-CHS'
+		self.url = 'http://www.bing.com/translator/api/Translate/TranslateArray?from=zh-CHS&to=ko'
+		# self.url = 'http://www.bing.com/translator/api/Translate/TranslateArray?from=ko&to=zh-CHS'
 		self.base_config()
 
 	def base_config(self):
@@ -34,8 +34,8 @@ class Dict:
 
 if __name__ == '__main__':
 	dic = Dict()
-	with open('/Users/menggui/iCloud Drive（归档）/Desktop/sogou/中韩/tourism1600.zh', 'r') as f:
-		with open('/Users/menggui/iCloud Drive（归档）/Desktop/sogou/中韩/tourism1600-bing.jp', 'w') as f1:
+	with open('./source/oral1600.zh', 'r') as f:
+		with open('./result/oral1600-bing.ko', 'w') as f1:
 			for i, line in enumerate(f.readlines()):
 				# if i < 279:
 				# 	continue
