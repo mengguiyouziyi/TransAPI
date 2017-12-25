@@ -68,7 +68,7 @@ class Dict:
 		data = {
 			'i': i,
 			'from': 'zh-CHS',
-			'to': 'ko',
+			'to': 'ja',
 			'smartresult': 'dict',
 			'client': 'fanyideskweb',
 			'salt': salf,
@@ -77,8 +77,8 @@ class Dict:
 			'version': "2.1",
 			'keyfrom': "fanyi.web",
 			# 'action': "FY_BY_DEFAULT",
-			'action': "FY_BY_CLICKBUTTION",
-			# 'action': "FY_BY_REALTIME",
+			# 'action': "FY_BY_CLICKBUTTION",
+			'action': "FY_BY_REALTIME",
 			'typoResult': 'false'
 		}
 		try:
@@ -93,8 +93,8 @@ class Dict:
 
 
 if __name__ == '__main__':
-	with open('./source/oral1600.zh', 'r') as f:
-		with open('./result/oral1600-youdao.ko', 'a') as f1:
+	with open('./source/tourism1600.zh', 'r') as f:
+		with open('./result/tourism1600-youdao.jp', 'a') as f1:
 			for i, line in enumerate(f.readlines()):
 				if i + 1 < 753:
 					continue
