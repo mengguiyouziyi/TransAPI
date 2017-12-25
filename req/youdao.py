@@ -67,8 +67,8 @@ class Dict:
 		sign = self.m.hexdigest()
 		data = {
 			'i': i,
-			'from': 'ko',
-			'to': 'zh-CHS',
+			'from': 'zh-CHS',
+			'to': 'ko',
 			'smartresult': 'dict',
 			'client': 'fanyideskweb',
 			'salt': salf,
@@ -77,10 +77,10 @@ class Dict:
 			'version': "2.1",
 			'keyfrom': "fanyi.web",
 			# 'action': "FY_BY_DEFAULT",
-			'action': "FY_BY_CLICKBUTTION",
+			# 'action': "FY_BY_CLICKBUTTION",
+			'action': "FY_BY_REALTIME",
 			'typoResult': 'false'
 		}
-		print(data)
 		try:
 			resp = self.s.post(self.url, headers=self.headers, data=data).json()
 			if resp.get('errorCode') != 0:
@@ -93,19 +93,20 @@ class Dict:
 
 
 if __name__ == '__main__':
-	dic = Dict()
-	res = dic.translate('石油化学等中间材料的出口也出现了爆发性的增长。')
-	print(res)
-
-	# with open('/Users/menggui/iCloud Drive（归档）/Desktop/sogou/中韩/oral1600.ko', 'r') as f:
-	# 	with open('/Users/menggui/iCloud Drive（归档）/Desktop/sogou/中韩/oral1600-youdao.zh', 'w') as f1:
-	# 		for i, line in enumerate(f.readlines()):
-	# 			dic = Dict()
-	# 			print(str(i + 1), line)
-	# 			line = line.replace('\n', '').replace('\r', '').replace('"', '\"')
-	# 			t_line = dic.translate(line)
-	# 			while not t_line:
-	# 				t_line = dic.translate(line)
-	# 				print('again...')
-	# 			f1.write(t_line + '\n')
-	# 			time.sleep(2)
+	with open('./source/oral1600.zh', 'r') as f:
+		with open('./result/oral1600-youdao.ko', 'w') as f1:
+			for i, line in enumerate(f.readlines()):
+				# if i < 809:
+				# 	continue
+				if line == '\n':
+					f1.write(line)
+					continue
+				dic = Dict()
+				print(str(i + 1), line)
+				line = line.replace('\n', '').replace('\r', '').replace('"', '\"')
+				t_line = dic.translate(line)
+				while not t_line:
+					t_line = dic.translate(line)
+					print('again...')
+				f1.write(t_line + '\n')
+				time.sleep(2)
