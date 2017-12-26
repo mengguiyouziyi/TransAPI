@@ -15,11 +15,11 @@ def translate(line):
 		'Connection': 'keep-alive',
 		'Content-Length': '205',
 		'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-		'Cookie': 'JSESSIONID=aaalHNVSigPD8-hsnhf3v; SESSION_FROM_COOKIE=fanyiweb; OUTFOX_SEARCH_USER_ID=526401539@113.16.65.153; _ntes_nnid=1892114ba72ae7f868a29a4db02914a0,1502250589343; _dict_cpm_show=1502250589350; _dict_cpm_close=1; OUTFOX_SEARCH_USER_ID_NCOO=1688640113.572293; ___rl__test__cookies=1502251640921',
+		'Cookie': 'DICT_UGC=be3af0da19b5c5e6aa4e17bd8d90b28a|; OUTFOX_SEARCH_USER_ID=-387641640@111.202.103.204; JSESSIONID=abcycARi1YlJ3dwyg1Zbw; OUTFOX_SEARCH_USER_ID_NCOO=1989515012.5791845; fanyi-ad-id=39535; fanyi-ad-closed=1; ___rl__test__cookies=1514269650057',
 		'Host': 'fanyi.youdao.com',
 		'Origin': 'http://fanyi.youdao.com',
 		'Referer': 'http://fanyi.youdao.com/',
-		'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.90 Safari/537.36',
+		'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.108 Safari/537.36',
 		'X-Requested-With': 'XMLHttpRequest',
 	}
 	url = 'http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule&sessionFrom='
@@ -28,8 +28,8 @@ def translate(line):
 	sign = hashlib.md5(n.encode('utf-8')).hexdigest()
 	data = {
 		'i': line,
-		'from': 'AUTO',
-		'to': 'ko',
+		'from': 'zh-CHS',
+		'to': 'ja',
 		'smartresult': 'dict',
 		'client': 'fanyideskweb',
 		'salt': salf,
@@ -54,10 +54,10 @@ def translate(line):
 
 
 if __name__ == '__main__':
-	with codecs.open('./source/oral1600.zh', 'r', 'utf-8') as f:
-		with codecs.open('./result/oral1600-youdao.ko', 'a', 'utf-8') as f1:
+	with codecs.open('./source/tourism1600.zh', 'r', 'utf-8') as f:
+		with codecs.open('./result/tourism1600-youdao.jp', 'a', 'utf-8') as f1:
 			for i, line in enumerate(f.readlines()):
-				if i + 1 < 969:
+				if i + 1 < 745:
 					continue
 				if line == '\n':
 					f1.write(line)
