@@ -51,12 +51,13 @@ class Dict:
 		self.s = requests.Session()
 		self.m = hashlib.md5()
 		self.headers = {
-			'User-Agent': random.choice(USER_AGENT_CHOICES),
+			# 'User-Agent': random.choice(USER_AGENT_CHOICES),
+			'User-Agent': 'Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 5.1; The World)',
 			'Referer': 'http://fanyi.youdao.com/',
 			'contentType': 'application/x-www-form-urlencoded; charset=UTF-8'
 		}
 		self.url = 'http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule&sessionFrom='
-		self.base_config()
+		# self.base_config()
 
 	def base_config(self):
 		self.s.get('http://fanyi.youdao.com/', headers=self.headers)
@@ -78,12 +79,13 @@ class Dict:
 			'version': "2.1",
 			'keyfrom': "fanyi.web",
 			# 'action': "FY_BY_DEFAULT",
-			'action': "FY_BY_CLICKBUTTION",
-			# 'action': "FY_BY_REALTIME",
+			# 'action': "FY_BY_CLICKBUTTION",
+			'action': "FY_BY_REALTIME",
 			'typoResult': 'false'
 		}
 		try:
 			resp = self.s.post(self.url, headers=self.headers, data=data).json()
+			print(resp)
 			if resp.get('errorCode') != 0:
 				return
 			trans = resp.get('translateResult', [])[0][0].get('tgt')
@@ -94,6 +96,7 @@ class Dict:
 
 
 if __name__ == '__main__':
+	dic = Dict()
 	with codecs.open('./source/oral1600.zh', 'r', 'utf-8') as f:
 		with codecs.open('./result/oral1600-youdao.ko', 'a', 'utf-8') as f1:
 			for i, line in enumerate(f.readlines()):
@@ -102,7 +105,6 @@ if __name__ == '__main__':
 				if line == '\n':
 					f1.write(line)
 					continue
-				dic = Dict()
 				print(str(i + 1), line)
 				line = line.replace('\n', '').replace('\r', '').replace('"', '\"')
 				t_line = dic.translate(line)
@@ -116,4 +118,4 @@ if __name__ == '__main__':
 					t_line = dic.translate(line)
 					print('again...')
 				f1.write(t_line + '\n')
-				time.sleep(2)
+				time.sleep(2.5)
