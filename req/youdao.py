@@ -57,7 +57,7 @@ class Dict:
 			'contentType': 'application/x-www-form-urlencoded; charset=UTF-8'
 		}
 		self.url = 'http://fanyi.youdao.com/translate_o?smartresult=dict&smartresult=rule&sessionFrom='
-		# self.base_config()
+		self.base_config()
 
 	def base_config(self):
 		self.s.get('http://fanyi.youdao.com/', headers=self.headers)
