@@ -4,6 +4,7 @@ import requests
 import time
 import random
 import traceback
+import codecs
 
 USER_AGENT_CHOICES = [
 	'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0_3 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Mobile/15A432',
@@ -93,8 +94,8 @@ class Dict:
 
 
 if __name__ == '__main__':
-	with open('./source/oral1600.zh', 'r') as f:
-		with open('./result/oral1600-youdao.ko', 'a') as f1:
+	with codecs.open('./source/oral1600.zh', 'r', 'utf-8') as f:
+		with codecs.open('./result/oral1600-youdao.ko', 'a', 'utf-8') as f1:
 			for i, line in enumerate(f.readlines()):
 				if i + 1 < 810:
 					continue
