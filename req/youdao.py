@@ -78,8 +78,8 @@ class Dict:
 			'version': "2.1",
 			'keyfrom': "fanyi.web",
 			# 'action': "FY_BY_DEFAULT",
-			# 'action': "FY_BY_CLICKBUTTION",
-			'action': "FY_BY_REALTIME",
+			'action': "FY_BY_CLICKBUTTION",
+			# 'action': "FY_BY_REALTIME",
 			'typoResult': 'false'
 		}
 		try:
