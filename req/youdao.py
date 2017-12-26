@@ -68,7 +68,7 @@ class Dict:
 		data = {
 			'i': i,
 			'from': 'zh-CHS',
-			'to': 'ja',
+			'to': 'ko',
 			'smartresult': 'dict',
 			'client': 'fanyideskweb',
 			'salt': salf,
@@ -93,11 +93,11 @@ class Dict:
 
 
 if __name__ == '__main__':
-	with open('./source/tourism1600.zh', 'r') as f:
-		with open('./result/tourism1600-youdao.jp', 'a') as f1:
+	with open('./source/oral1600.zh', 'r') as f:
+		with open('./result/oral1600-youdao.ko', 'a') as f1:
 			for i, line in enumerate(f.readlines()):
-				# if i + 1 < 753:
-				# 	continue
+				if i + 1 < 753:
+					continue
 				if line == '\n':
 					f1.write(line)
 					continue
@@ -105,7 +105,13 @@ if __name__ == '__main__':
 				print(str(i + 1), line)
 				line = line.replace('\n', '').replace('\r', '').replace('"', '\"')
 				t_line = dic.translate(line)
+				n = 0
 				while not t_line:
+					time.sleep(5)
+					n += 1
+					if n > 6:
+						print('exit...')
+						exit(1)
 					t_line = dic.translate(line)
 					print('again...')
 				f1.write(t_line + '\n')
