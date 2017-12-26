@@ -40,7 +40,7 @@ class Dict:
 			# 'action': "FY_BY_DEFAULT",
 			'action': "FY_BY_CLICKBUTTION",
 			# 'action': "FY_BY_REALTIME",
-			'typoResult': 'true'
+			'typoResult': 'false'
 		}
 		try:
 			resp = self.s.post(self.url, headers=self.headers, data=data).json()
@@ -58,7 +58,7 @@ if __name__ == '__main__':
 	with codecs.open('./source/oral1600.zh', 'r', 'utf-8') as f:
 		with codecs.open('./result/oral1600-youdao.ko', 'a', 'utf-8') as f1:
 			for i, line in enumerate(f.readlines()):
-				if i + 1 < 810:
+				if i + 1 < 962:
 					continue
 				if line == '\n':
 					f1.write(line)

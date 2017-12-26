@@ -38,8 +38,8 @@ def translate(line):
 		'version': "2.1",
 		'keyfrom': "fanyi.web",
 		# 'action': "FY_BY_DEFAULT",
-		'action': "FY_BY_CLICKBUTTION",
-		# 'action': "FY_BY_REALTIME",
+		# 'action': "FY_BY_CLICKBUTTION",
+		'action': "FY_BY_REALTIME",
 		'typoResult': 'true'
 	}
 	try:
@@ -55,25 +55,24 @@ def translate(line):
 
 if __name__ == '__main__':
 	with codecs.open('./source/oral1600.zh', 'r', 'utf-8') as f:
-		with codecs.open('./result/oral1600-youdao-2.ko', 'a', 'utf-8') as f1:
+		with codecs.open('./result/oral1600-youdao.ko', 'a', 'utf-8') as f1:
 			for i, line in enumerate(f.readlines()):
-				if i + 1 < 810:
+				if i + 1 < 969:
 					continue
 				if line == '\n':
 					f1.write(line)
 					continue
 				print(str(i + 1), line)
-
 				line = line.replace('\n', '').replace('\r', '').replace('"', '\"').replace('﻿', '')
 				t_line = translate(line)
 				n = 0
 				while not t_line:
 					time.sleep(5)
 					n += 1
-					if n > 6:
+					if n > 5:
 						print('exit...')
 						exit(1)
 					t_line = translate(line)
 					print('again...')
 				f1.write(t_line + '\n')
-				time.sleep(2)
+				time.sleep(3)

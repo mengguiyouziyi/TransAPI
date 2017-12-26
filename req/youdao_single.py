@@ -13,7 +13,7 @@ def translate(line):
 	content = line
 
 	s = "AUTO",
-	l = "zh"
+	l = "ko"
 	u = 'fanyideskweb'
 	c = 'aNPG!!u6sesA>hBAW1@(-'
 	d = content
@@ -61,7 +61,7 @@ def translate(line):
 
 
 if __name__ == '__main__':
-	trans = translate('「Homless to Harvard」は素晴らしい映画です。')
+	trans = translate('虽然我是外国人，但是我还是很喜欢中国文化。')
 	print(trans)
 # 	with codecs.open('./source/oral1600.zh', 'r', 'utf-8') as f:
 # 		with codecs.open('./result/oral1600-youdao-2.ko', 'a', 'utf-8') as f1:
