@@ -96,7 +96,7 @@ if __name__ == '__main__':
 	with open('./source/oral1600.zh', 'r') as f:
 		with open('./result/oral1600-youdao.ko', 'a') as f1:
 			for i, line in enumerate(f.readlines()):
-				if i + 1 < 753:
+				if i + 1 < 810:
 					continue
 				if line == '\n':
 					f1.write(line)
@@ -115,4 +115,4 @@ if __name__ == '__main__':
 					t_line = dic.translate(line)
 					print('again...')
 				f1.write(t_line + '\n')
-				time.sleep(1.5)
+				time.sleep(2)
